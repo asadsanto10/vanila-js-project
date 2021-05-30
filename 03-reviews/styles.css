@@ -181,14 +181,29 @@ main {
   padding: 1.5rem 2rem;
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
-  transition: var(--transition);
+  /* transition: var(--transition); */
   text-align: center;
   overflow: hidden;
 }
-.animated {
-  left: 100%;
-  transform: translate(-100%, 0);
+
+.animation-left-to-right {
+  animation-name: left-to-right;
+
+  animation-duration: 1s;
+  transition: left-to-right 0.5s cubic-bezier(0.4, 0, 1, 1);
+  animation-direction: linear;
+  /* animation-iteration-count: infinite; */
 }
+
+@keyframes left-to-right {
+  0% {
+    transform: translate(105%);
+  }
+  100% {
+    transform: translate(-105%);
+  }
+}
+
 .review:hover {
   box-shadow: var(--dark-shadow);
 }

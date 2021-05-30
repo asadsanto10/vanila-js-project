@@ -36,7 +36,7 @@ const author = document.getElementById("author");
 const job = document.getElementById("job");
 const info = document.getElementById("info");
 
-const animate = document.querySelector(".animate");
+const animate = document.querySelector(".animatedfdsfs");
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
 const randomBtn = document.querySelector(".random-btn");
@@ -60,14 +60,6 @@ const show = (person) => {
 // show prev person
 prevBtn.addEventListener("click", () => {
   prevNext(true, false);
-  animate.style.opacity = 0;
-  animate.style.transform = "translate(-100%);";
-  prevNext(true, false);
-  setTimeout(() => {
-    animate.style.opacity = 1;
-    animate.style.transform = "translate(0);";
-    animate.style.transition = "all 0.5s ease";
-  }, 300);
 });
 // show next person
 nextBtn.addEventListener("click", () => {
@@ -81,16 +73,33 @@ const prevNext = (prev, next) => {
     if (currentItem < 0) {
       currentItem = reviews.length - 1;
     }
+    // animate.classList.remove("animate__fadeInRight", "animate__fadeIn");
+    setTimeout(() => {
+      animate.classList.add("animate__fadeInRight");
+    });
+    animate.classList.remove("animate__fadeInRight", "animate__fadeIn");
   } else if (next) {
     currentItem++;
     if (currentItem > reviews.length - 1) {
       currentItem = 0;
     }
+    setTimeout(() => {
+      animate.classList.add("animate__fadeInLeft");
+    });
+    animate.classList.remove("animate__fadeInLeft", "animate__fadeIn");
   }
   show(currentItem);
 };
 
 randomBtn.addEventListener("click", () => {
+  setTimeout(() => {
+    animate.classList.add("animate__fadeIn");
+  });
+  animate.classList.remove(
+    "animate__fadeInLeft",
+    "animate__fadeInRight",
+    "animate__fadeIn"
+  );
   const random = Math.floor(Math.random() * reviews.length);
   show(random);
 });
