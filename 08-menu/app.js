@@ -124,6 +124,7 @@ const filterBtnItems = (btnFilter) => {
       } else {
         displayMenu(menuCategory);
       }
+      animate(sectionCenter);
     });
   });
 };
@@ -144,5 +145,18 @@ const displayMenu = (menuItem) => {
           </div>
         </article>`;
   });
+
   sectionCenter.innerHTML = displayMenu.join("");
+  const singleMenuItem = sectionCenter.querySelectorAll(".menu-item");
+
+  singleMenuItem.forEach((item) => {
+    animate(item);
+  });
 };
+
+function animate(element) {
+  transition.begin(element, [
+    ["transform", "scale(.5)", "scale(1)", "0.5s", "ease-in-out"],
+    ["opacity", "0", "1", "0.1s", "ease-in-out"],
+  ]);
+}
